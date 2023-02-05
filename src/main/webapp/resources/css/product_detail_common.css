@@ -1,0 +1,33 @@
+@charset "UTF-8";
+div{
+		margin-top:20px; 
+	}
+	.cont{
+	margin-bottom:20px;
+	display: flex;
+	margin-top:50px;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	}
+	.insert{
+		width:1024px;
+		height:auto;
+	}
+	
+	.product_event{
+		width:auto;
+		margin-top:20px; 
+		padding-top:20px;	
+		border-top-style:solid;
+	}
+	.product_event input{
+		float:right;
+		margin-left:15px;
+		 
+	}
+	.cont-h2{
+		padding-bottom:20px;
+		border-bottom-style:solid; 
+	}
+	

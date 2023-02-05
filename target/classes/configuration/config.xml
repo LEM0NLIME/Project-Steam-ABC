@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+<typeAliases>
+	<typeAlias alias="MemberDTO" type="project.steam.abc.member.dto.MemberDTO"/>
+	<typeAlias alias="MemberDTO2" type="project.steam.abc.member.dto.MemberDTO2"/>
+	<typeAlias alias="PageDTO" type="project.steam.abc.page.dto.PageDTO"/>
+	<typeAlias alias="CustomerDTO" type="project.steam.abc.customer.dto.CustomerDTO"/>
+	<typeAlias alias="ProductDTO" type="project.steam.abc.product.dto.ProductDTO"/>
+	<typeAlias alias="CartDTO" type="project.steam.abc.cart.dto.CartDTO"/>
+	<typeAlias alias="CartCalculateDTO" type="project.steam.abc.cart.dto.CartCalculateDTO"/>
+	<typeAlias alias="OrderDTO" type="project.steam.abc.mypage.orderdto.OrderDTO"/>
+	<typeAlias alias="OrderPageDTO" type="project.steam.abc.mypage.orderdto.OrderPageDTO"/>
+	<typeAlias alias="OrderSearchDTO" type="project.steam.abc.mypage.orderdto.OrderSearchDTO"/>
+	<typeAlias alias="ApplicationDTO" type="project.steam.abc.mypage.applicationdto.ApplicationDTO"/>
+	<typeAlias alias="ApplicationPageDTO" type="project.steam.abc.mypage.applicationdto.ApplicationPageDTO"/>
+	<typeAlias alias="ApplicationSearchDTO" type="project.steam.abc.mypage.applicationdto.ApplicationSearchDTO"/>
+	<typeAlias alias="ReviewDTO" type="project.steam.abc.review.dto.ReviewDTO"/>
+	<typeAlias alias="EventDTO" type="project.steam.abc.event.dto.EventDTO" />
+</typeAliases>
+
+</configuration>
+
