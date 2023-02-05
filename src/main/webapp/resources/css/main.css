@@ -1,0 +1,160 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+a{
+
+text-decoration: none;
+
+}
+
+body {
+margin:auto;
+font-family: 'Noto Sans KR';
+font-size: 16px;
+font-weight: bold;
+font-style: normal;
+
+}
+
+#play {
+ 
+border: 0;
+outline: 0;
+background-color: none;
+
+}
+
+#pause {
+ 
+border: 0;
+outline: 0;
+background-color: none;
+
+}
+
+#centre {
+
+width: 150px;
+margin: auto;
+
+}
+
+.fontInterval {
+
+padding-left: 60px;
+
+}
+
+.slide {
+
+width: 350px;
+height: 200px;
+
+}
+	
+.image {
+
+width: 220px;
+height: 80px;
+
+}
+
+.icon {
+
+width: 65px;
+height: 65px;
+float: right;
+padding-right: 20px;
+padding-top: 18px;
+
+}
+
+.arrows {
+
+width: 30px;
+height: 30px;
+cursor: pointer;
+border: none;
+outline: none;
+
+
+}
+
+.imgBlank {
+
+margin-left: 40px;
+margin-right: 40px;
+
+}
+
+.bodyBlank {
+
+padding-left: 600px;
+padding-right: 250px;
+
+}
+
+.navBlankLeft {
+
+background-color: red;
+color: yellow;
+height: 50px;
+line-height: 50px;
+
+}
+
+.navBlankRight {
+
+background-color: red;
+color: white;
+height: 50px;
+line-height: 50px;
+
+}
+
+.navContentL {
+
+margin-left: 100px;
+padding-left: 100px;
+
+}
+
+.navContentR {
+
+margin-right: 100px;
+padding-right: 100px;
+float: right;
+
+}
+
+.blank {
+
+margin-left: 100px;
+margin-right: 100px;
+margin-bottom: 70px;
+height: 100px;
+
+}
+
+.navigator{
+width:100%;
+background-color: red;
+
+}
+
+.bottom{
+
+height: 50px;
+background-color: lightgray;
+
+}
+
+.spanMargin {
+
+padding-left: 300px;
+
+}

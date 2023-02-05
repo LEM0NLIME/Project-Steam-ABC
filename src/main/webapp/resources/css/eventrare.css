@@ -1,0 +1,107 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+ul {
+	list-style-type: none;
+	text-align: center;
+}
+
+.upperLi {
+	display: inline-block;
+	width: 1200px;
+	height: auto;
+}
+
+.li {
+	display: inline-block;
+}
+
+a {
+	text-decoration-line: none;
+	color: inherit;
+}
+
+a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration-line: none !important;
+	color: inherit !important;
+	text-decoration-color: white !important;
+}
+
+.eventcenter {
+	display: flex;
+	margin-top: 50px;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+.listcontent {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 350px;
+	height: 45px;
+}
+
+.eventmargin {
+	width: 1200px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.detailtable {
+	margin: 100px auto;
+	max-width: 500px;
+}
+
+.detailtable table {
+	width: 500px;
+	border-collapse: collapse;
+	border-top: 0.5px solid;
+}
+
+.detailtable th, td {
+	border-bottom: 0.5px solid;
+	padding: 10px;
+}
+
+.detailtable th {
+	text-align: left;
+}
+
+.detailtable td {
+	text-align: right;
+}
+
+.btn-a {
+	width: 400px;
+	background-color: black;
+	color: white;
+	padding: 10px 24px;
+	font-size: 12pt;
+	cursor: pointer;
+}
+
+.btn-b {
+	width: 130px;
+	background-color: black;
+	color: white;
+	padding: 10px 20px;
+	font-size: 12pt;
+	cursor: pointer;
+}
+
+.btn-c {
+	width: 150px;
+	background-color: black;
+	color: white;
+	padding: 10px 24px;
+	font-size: 12pt;
+	cursor: pointer;
+}

@@ -1,0 +1,184 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+a{
+
+text-decoration: none;
+ color: #73685d;
+
+}
+
+body {
+
+font-family: 'Noto Sans KR';
+font-size: 16px;
+font-weight: bold;
+font-style: normal;
+
+}
+
+.fontInterval {
+
+padding-left: 60px;
+
+}
+	
+.image {
+
+width: 220px;
+height: 80px;
+
+}
+
+.icon {
+
+width: 65px;
+height: 65px;
+float: right;
+padding-right: 20px;
+padding-top: 18px;
+
+}
+
+.imgBlank {
+
+margin-left: 40px;
+margin-right: 40px;
+
+}
+
+.navBlankLeft {
+
+background-color: red;
+color: yellow;
+height: 50px;
+line-height: 50px;
+
+}
+
+.navBlankRight {
+
+background-color: red;
+color: white;
+height: 50px;
+line-height: 50px;
+
+}
+
+.navContentL {
+
+margin-left: 100px;
+padding-left: 100px;
+
+}
+
+.navContentR {
+
+margin-right: 100px;
+padding-right: 100px;
+float: right;
+
+}
+
+.blank {
+
+margin-left: 100px;
+margin-right: 100px;
+margin-bottom: 70px;
+height: 100px;
+
+}
+
+.navigator{
+
+background-color: red;
+
+}
+
+.default-btn {
+	
+	background-color: black;
+	color: white;
+	font-weight:1500;
+	cursor: pointer;
+    min-width: 80px;
+    height: 30px;
+    border: 1px solid #111;
+    text-align: center;
+    font-size: 12px;
+    
+}
+
+.bottom{
+
+height: 50px;
+background-color: lightgray;
+
+}
+
+input[type="submit"] {
+	width: 800px;
+	height: 50px;
+	border: 0;
+	outline: none;
+	border-radius: 0px;
+	color: white;
+	background: black;
+}
+
+.custom_btn {
+	
+	cursor: pointer;
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	width: 49.87%;
+	height: 65px;
+	border: 0;
+	outline: solid 1px;
+	border-radius: 0px;
+	color: #000;
+	background: #ffffff;
+	
+}
+
+.custom_btn2 {
+	
+	cursor: pointer;
+	font-family: 'Noto Sans KR';
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	width: 49.87%;
+	height: 65px;
+	border: 0;
+	outline: solid 3px;
+	border-radius: 0px;
+	color: #000;
+	background: #ffffff;
+	
+}
+
+
+.div1 {
+	border-bottom: solid;
+}
+
+
+.custom {
+	border: none;
+	border-bottom: 1px solid lightgray;
+}
+
+.border {
+	border: none;
+}
+
+.cursor {
+	cursor: pointer;
+}

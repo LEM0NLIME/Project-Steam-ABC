@@ -1,0 +1,99 @@
+@charset "UTF-8";
+.bottom {
+	position: absolute;
+	height: 50px;
+	background-color: lightgray;
+}
+.adminth {
+  text-align: center;
+  padding: 1em .5em;
+  vertical-align: middle;
+}
+  
+.adminthead {
+  font-weight: bold;
+  color: #fff;
+  background: #73685d;
+}
+  
+ .admintd{
+  padding: 1em .5em;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  background: #fff;
+}
+  
+.admintable {
+  margin:auto;
+  border: 1px #a39485 solid;
+  font-size: .9em;
+  box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  width: 1024px;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.cart_total{
+	border: none;
+	float: right;
+}
+.cart_total_box{
+	float:right;
+	margin-top:0px;
+}
+.cart_input_box{
+	text-align:right;
+}
+.cart_admin_list_td{
+	text-align:right;
+}
+.cart_table_th{
+	width: 38.7%;
+}
+
+.cart_list_td {
+	text-align: center;
+}
+
+div {
+	margin-top: 20px;
+}
+
+.container {
+	display: flex;
+	margin-top: 50px;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+}
+.container form {
+	width: 1024px;
+}
+
+.insert {
+	width: 1024px;
+	height: auto;
+}
+
+.product_event {
+	width: auto;
+	margin-top: 20px;
+	padding-top: 20px;
+	border-top-style: solid;
+}
+
+.product_event input {
+	float: right;
+	margin-left: 15px;
+}
+
+.cont-h2 {
+	padding-bottom: 20px;
+	border-bottom-style: solid;
+}
+
+.cartimg {
+	width: 200px;
+}

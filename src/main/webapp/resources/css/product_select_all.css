@@ -1,0 +1,164 @@
+@charset "UTF-8";
+a {
+  color: #1d2124;
+  text-decoration: none;
+  background-color: transparent;
+}
+ul {
+	list-style: none;
+}
+
+section {
+	display: flex;
+}
+
+.testp li {
+	width: 150px;
+	height: 100px;
+}
+
+.product {
+	display: block;
+	width: 205px;
+	text-align: center;
+	text-decoration: none;
+	color: black;
+	float: left;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 30px;
+}
+.product-list {
+	width: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.products h3 {
+	font-size: 40px;
+	color: #545454;
+	margin-top: 60px;
+	margin-bottom: 30px;
+	text-align: center;
+	border-bottom:solid;
+	padding-bottom:20px; 
+}
+
+.product-name {
+	margin-top: 20px;
+	margin-bottom: 4px;
+}
+
+.product-list .product img {
+	width: 200px;
+}
+.product-list a{
+	text-decoration: none;
+}
+.top {
+	width: 300px;
+}
+
+.pbody {
+	display: flex;
+	margin: 5px;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+}
+
+.product-list-main {
+	margin: 5px;
+	border-radius: 10px;
+	justify-content: center;
+	align-items: center;
+	height:600px;
+}
+
+.search{
+	width:1200px;
+	height:80px;
+	padding-top:20px;
+	border-top:solid;
+}
+
+.search-input{
+	width:80px; 
+	margin-right:10px;
+}
+
+.bottom-ul{
+	height:80px;
+}
+
+.bottom-li{
+	float: left;
+}
+
+.bottom-li1{
+	float: left;
+	margin-left:20%;
+}
+
+.bottom-li2{
+	float: right;
+	padding-right: 40px;
+}
+
+.pagination{
+	display: text-align:center; 
+	margin-left: 50%;
+}
+.pagination-li{
+	display: inline-block; margin-left: 10%;
+}
+
+#keywordInput{
+	width:150px;
+}
+
+.pagination li{
+	
+	margin-right:5px;
+}
+
+
+.left-meun {
+	margin: 5px; 
+	float: left;
+	width: 200px;
+	height:250px;
+	border-right: solid;
+	border-right-color: gray;
+	border-bottom: solid;
+	border-bottom-color: gray;
+}
+.left-meun input{
+	width:198px;
+}
+.left-menu-ul{
+	margin-top:10px;
+	margin-left:-35px;
+}
+.left-menu-ul h4{
+	text-align:center;
+	border-bottom:solid;
+	padding-bottom: 10px;
+}
+.left-menu-ul h5{
+	font-size:18px;
+}
+.left-menu-ula{
+	margin-left:-70px;
+}
+.left-meun li{
+	cursor: pointer;
+}
+
+.left-meun li:hover {
+	
+}

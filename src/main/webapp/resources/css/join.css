@@ -1,0 +1,223 @@
+@charset "UTF-8";
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+a{
+
+text-decoration: none;
+
+}
+
+body {
+
+font-family: 'Noto Sans KR';
+font-size: 16px;
+font-weight: bold;
+font-style: normal;
+
+}
+
+.fontInterval {
+
+padding-left: 60px;
+
+}
+	
+.image {
+
+width: 220px;
+height: 80px;
+
+}
+
+.icon {
+
+width: 65px;
+height: 65px;
+float: right;
+padding-right: 20px;
+padding-top: 18px;
+
+}
+
+.imgBlank {
+
+margin-left: 40px;
+margin-right: 40px;
+
+}
+
+.navBlankLeft {
+
+background-color: red;
+color: yellow;
+height: 50px;
+line-height: 50px;
+
+}
+
+.navBlankRight {
+
+background-color: red;
+color: white;
+height: 50px;
+line-height: 50px;
+
+}
+
+.navContentL {
+
+margin-left: 100px;
+padding-left: 100px;
+
+}
+
+.navContentR {
+
+margin-right: 100px;
+padding-right: 100px;
+float: right;
+
+}
+
+.blank {
+
+margin-left: 100px;
+margin-right: 100px;
+margin-bottom: 70px;
+height: 100px;
+
+}
+
+.navigator{
+
+background-color: red;
+
+}
+
+.find-btn {
+	text-align: center;
+}
+
+.find-btn1 {
+	display: inline-block;
+}
+
+input[type="submit"] {
+	width: 200px;
+	height: 50px;
+	border: 0;
+	outline: none;
+	border-radius: 0px;
+	color: white;
+	background: black;
+}
+
+.default-btn {
+	width: 200px;
+	height: 50px;
+	border: 0;
+	outline: none;
+	border-radius: 0px;
+	color: white;
+	background: black;
+}
+
+.reset {
+	width: 200px;
+	height: 50px;
+	border: 0;
+	outline: none;
+	border-radius: 0px;
+	color: white;
+	background: gray;
+}
+
+.custom {
+	border: none;
+	border-bottom: 1px solid lightgray;
+}
+
+.custom2 {
+	border-width: 20px;
+	border-height: 15px;
+}
+
+.custom3 {
+	border: none;
+	border-bottom: 1px solid lightgray;
+	width: 950px;
+	margin-left: 250px;
+	mergin-right: 250px padding-left:250px;
+	padding-right: 250px;
+}
+
+.div1 {
+	border-bottom: solid;
+	width: 950px;
+	margin-left: 300px;
+	mergin-right: 250px padding-left:300px;
+	padding-right: 250px;
+}
+
+.div2 {
+	border-bottom: 1px solid gray;
+	width: 950px;
+	margin-left: 300px;
+	mergin-right: 250px padding-left:300px;
+	padding-right: 250px;
+}
+
+.div3 {
+	width: 950px;
+	margin-left: 300px;
+	mergin-right: 250px padding-left:300px;
+	padding-right: 250px;
+}
+
+.div4 {
+	width: 950px;
+	margin-left: 400px;
+	mergin-right: 150px padding-left:400px;
+	padding-right: 150px;
+}
+
+.p1 {
+	width: 290px;
+}
+
+.p2 {
+	width: 178px;
+}
+
+.p3 {
+	width: 220px;
+}
+
+.border {
+
+	border: none;
+	padding-left: 50px;
+}
+
+.bottom {
+
+height: 50px;
+background-color: lightgray;
+
+}
+
+.btn-certification {
+	background-color: black;
+	color: white;
+	font-weight:1500;
+	cursor: pointer;
+    min-width: 80px;
+    height: 30px;
+    border: 1px solid #111;
+    text-align: center;
+    font-size: 12px;
+}

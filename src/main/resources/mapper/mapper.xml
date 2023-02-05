@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="project.steam.abc">
+
+	<select id="memberInquiryAll" resultType="MemberDTO">
+ 		select * from ( select rownum as num, A.* from ( select * from members order by rownum asc) A ) 
+ 		where num between #{begin} and #{end}
+	</select>
+
+	<select id="memberInquiryDetail" parameterType="MemberDTO" resultType="MemberDTO">
+		 select * from members
+		 where mid = #{mid}
+	</select>
+	
+	<select id="memberIdSearch" parameterType="MemberDTO" resultType="MemberDTO">
+		 select * from members
+		 where mname = #{mname} and mphonenum = #{mphonenum}
+	</select>
+	
+	<select id="memberPwSearchAsEmail" parameterType="MemberDTO" resultType="MemberDTO">
+		 select * from members
+		 where mname = #{mname} and memail = #{memail}
+	</select>
+	
+	<select id="memberPwSearchAsPhoneNum" parameterType="MemberDTO" resultType="MemberDTO">
+		 select * from members
+		 where mname = #{mname} and mphonenum = #{mphonenum}
+	</select>
+
+	<select id="preMemberInquiryDetail" parameterType="MemberDTO2" resultType="MemberDTO2">
+		 select * from members
+ 		where mid = #{mid}
+	</select>
+
+	<insert id="memberInsert" parameterType="MemberDTO">
+ 		insert into members
+ 		values(#{mid}, #{mpw}, #{mname}, #{mgender}, #{memail}, #{mphonenum})
+	</insert>
+
+	<update id="memberUpdate" parameterType="MemberDTO">
+ 		update members set mpw = #{mpw}, mname = #{mname}, mgender = #{mgender}, memail = #{memail}, mphonenum = #{mphonenum}
+ 		where mid = #{mid}
+	</update>
+	
+	<update id="memberUpdateAsEmail" parameterType="MemberDTO">
+ 		update members set mpw = #{mpw}
+ 		where mname = #{mname} and memail = #{memail} and mid = #{mid}
+	</update>
+	
+	<update id="memberUpdateAsPhoneNum" parameterType="MemberDTO">
+ 		update members set mpw = #{mpw}
+ 		where mname = #{mname} and mphonenum = #{mphonenum} and mid = #{mid}
+	</update>
+
+	<delete id="memberDelete" parameterType="MemberDTO">
+		 delete from members
+		 where mid = #{mid}
+	</delete>
+
+	<select id="countMembers" resultType="int">
+ 		select count(*) from members
+	</select>
+
+	<select id="idCheck" resultType="int" parameterType="MemberDTO">
+ 		select count(mid) from members
+		 where mid = #{mid}
+	</select>
+
+	<!-- 전체 조회 +페이징 -->
+	<select id="CustomerListPage" resultType="CustomerDTO">
+
+		select sno,
+		stitle,
+		scontent,
+		sregdate
+		from (
+		select sno,
+		stitle,
+		scontent,
+		sregdate,
+		row_number() over(order by sno desc) as rnum
+		from customer
+		where 1=1
+		<include refid="search"></include>
+		) mp
+		where rnum between #{rowStart} and #{rowEnd}
+		order by sno desc
+
+	</select>
+
+
+	<!-- 게시물 총 갯수 -->
+	<select id="CustomerListCount" resultType="int">
+
+		select count(sno)
+		from customer
+		WHERE 1=1
+		<include refid="search"></include>
+		and sno > 0
+
+	</select>
+		<sql id="search">
+			<if test="searchType != null">
+				<if test="searchType == 't'.toString()">AND STITLE LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'c'.toString()">AND SCONTENT LIKE '%' || #{keyword} || '%'</if>
+				<if test="searchType == 'tc'.toString()">AND (STITLE LIKE '%' || #{keyword} || '%') or (SCONTENT LIKE '%' || #{keyword} || '%')</if>
+			</if>
+		</sql>
+	
+
+	<!-- 상세조회 -->
+	<select id="CustomerSelect" parameterType="CustomerDTO"
+			resultType="CustomerDTO">
+
+			select sno, stitle, scontent, sregdate from customer
+			where sno = #{sno}
+	</select>
+
+	<!--게시글 등록 -->
+	<insert id="CustomerInsert" parameterType="CustomerDTO">
+			insert into customer (sno, stitle, scontent, sregdate)
+			values(customer_seq.nextval, #{stitle}, #{scontent}, to_date(sysdate, 'yyyy.mm.dd'))
+	</insert>
+
+	<!-- 게시글 수정 -->
+	<update id="CustomerUpdate" parameterType="CustomerDTO">
+			update customer set stitle = #{stitle}, scontent =#{scontent}
+			where sno = #{sno}
+	</update>
+
+	<!-- 게시글 삭제 -->
+	<delete id="CustomerDelete" parameterType="CustomerDTO">
+			delete from customer
+			where sno = #{sno}
+	</delete>
+
+
+
+	<!-- 사진 업로드 전체조회 -->
+	<select id="productSelectAll" resultType="ProductDTO">
+		select pname, pbrand, psize, pcolor, pprice, psn, pinfo, pimg,
+		pthumbimg from
+		product
+	</select>
+
+	<!-- 페이징 처리 전체조회 -->
+	<select id="listPage" resultType="ProductDTO">
+		select pname, pbrand, psize, pcolor, pprice, psn, pinfo, pimg, pthumbimg
+		from (
+		select pname, pbrand, psize, pcolor,
+		pprice, psn, pinfo, pimg, pthumbimg,
+		row_number() over(order by pname desc) as rNum
+		from product
+		where 1=1
+		<include refid="productSearch"></include>
+		) MP
+		WHERE RNUM BETWEEN #{rowStart} AND #{rowEnd}
+		ORDER BY pname DESC
+	</select>
+
+	<!-- 상품 전체조회 갯수 -->
+	<select id="listCount" resultType="int">
+		SELECT COUNT(*) FROM product
+		where 1=1
+		<include refid="productSearch"></include>
+	</select>
+
+	<!-- 상품 검색 -->
+	<sql id="productSearch">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">AND pname LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'c'.toString()">AND pbrand LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
+
+	<!-- 상품조회 -->
+	<select id="productSelect" parameterType="ProductDTO" resultType="ProductDTO">
+		select pname, pbrand, psize, pcolor, pprice, psn,
+		pinfo, pimg, pthumbimg, mid from product
+		where pname = #{pname}
+	</select>
+
+	<!-- 상품조회 반환 OrderDTO-->
+	<select id="productSelectAsOrder" parameterType="ProductDTO" resultType="OrderDTO">
+		select pname, pbrand, psize, pcolor, pprice, psn,
+		pinfo, pimg, pthumbimg from product
+		where pname = #{pname}
+	</select>
+
+	<!-- 상품 등록 -->
+	<insert id="productInsert" parameterType="ProductDTO">
+		insert into product (pname, pbrand, psize, pcolor, pprice, psn, pinfo, pimg,
+		pthumbimg)
+		values(#{pname},#{pbrand},#{psize},#{pcolor},#{pprice},#{psn},#{pinfo},#{pimg},#{pthumbimg})
+	</insert>
+
+	<!-- 상품 업데이트 -->
+	<update id="productUpdate" parameterType="ProductDTO">
+		update product set pcolor = #{pcolor} ,pprice = #{pprice}, pinfo = #{pinfo},
+		pimg = #{pimg}, pthumbimg = #{pthumbimg}
+		where pname = #{pname}
+	</update>
+	
+	<!-- 상품 업데이트 -->
+	<update id="productUpdateSetMid" parameterType="String">
+		update product set mid = #{mid}
+	</update>
+
+	<!-- 상품삭제 -->
+	<delete id="productDelete" parameterType="ProductDTO">
+		delete from product
+		where pname = #{pname}
+	</delete>
+
+	<!-- 장바구니 추가 -->
+	<insert id="cartInsert">
+		insert into cart(mid, pname, cartcount, psize, pcartid)
+		values(#{mid}, #{pname}, #{cartcount}, #{psize}, PCARTID_SEQ.nextval)
+	</insert>
+
+	<!-- 장바구니 목록 -->
+	<!-- 장바구니 + 상품 JOIN문 -->
+	<resultMap type="CartDTO" id="CartMap">
+		<result column="pcartid" property="pcartid" />
+		<result column="mid" property="mid" />
+		<result column="pname" property="pname" />
+		<result column="cartcount" property="cartcount" />
+		<result column="pprice" property="pprice" />
+		<result column="pcolor" property="pcolor" />
+		<result column="psize" property="psize" />
+	</resultMap>
+	
+	<resultMap type="CartCalculateDTO" id="CartCalculateMap">
+		<result column="pcartid" property="pcartid" />
+		<result column="pname" property="pname" />
+		<result column="cartcount" property="cartcount" />
+		<result column="pprice" property="pprice" />	
+	</resultMap>
+	
+	<select id="cartSelect" parameterType="CartDTO" resultMap="CartMap">
+		select a.pcartid, a.mid, a.pname, a.cartcount, a.psize,
+		b.pprice, b.pcolor, b.pthumbimg
+		from cart a left outer join product b on a.pname = b.pname
+		where a.mid = #{mid}
+	</select>
+
+	<!-- 장바구니 전체 조회 -->
+	<select id="cartSelectAll" resultType="CartDTO">
+		select * from cart
+	</select>
+	
+	<!-- 장바구니 확인 -->
+	<!-- 장바구니 확인 JOIN문 -->
+	<select id="checkCart" resultType="CartDTO">
+		select * from cart
+		where mid = #{mid} and pname = #{pname}
+	</select>
+	
+	<resultMap type="orderDTO" id="CartCheckMap">
+		<result column="mid" property="mid" />
+		<result column="pbrand" property="pbrand" />
+		<result column="pname" property="pname" />
+		<result column="psize" property="psize" />
+		<result column="pcolor" property="pcolor" />
+		<result column="pprice" property="pprice" />
+		<result column="pimg" property="pimg" />
+		<result column="cartcount" property="pquantity" />
+	</resultMap>
+	
+	<!-- 장바구니 카트 확인 -->
+	<select id="orderCartCheck" resultMap="CartCheckMap">
+		select a.pname, a.pbrand, a.pcolor, a.pprice, a.pimg, a.mid,
+		b.pname, b.cartcount, b.psize, b.mid from product a
+		full outer join cart b
+		on a.pname = b.pname
+        where a.pname = #{pname} and b.mid = #{mid}
+	</select>
+	
+	<!-- 장바구니 카트 확인 -->
+	<select id="orderCartCheckAsOrder" resultMap="CartCheckMap">
+		select a.pname, a.pbrand, a.pcolor, a.pprice, a.pimg,
+		b.pname, b.cartcount, b.psize, b.mid from product a
+		full outer join cart b
+		on a.pname = b.pname
+        where a.pname = #{pname}
+	</select>
+
+	<!-- 장바구니 삭제 -->
+	<delete id="cartDelete">
+		delete from cart where pcartid = #{pcartid}
+	</delete>
+	
+	<!-- 장바구니 가격 수량 가져오기 -->
+	<select id="cartCalculate" resultMap="CartCalculateMap">
+		select a.pcartid, a.cartcount, a.pname,
+		b.pprice 
+		from cart a left outer join product b on a.pname = b.pname
+		where a.pcartid = #{pcartid}
+	</select>
+	
+		
+	<!-- 신청 페이징처리 전체 조회 -->
+	
+	<select id="aplListPage" parameterType="ApplicationSearchDTO" resultType="ApplicationDTO">
+		select * from (select aplno, mid, pbrand, pname, pcolor, psize, aplcontents, aplreasons, row_number()
+		over(order by aplno desc) as rnum
+		from application where 1=1
+		<include refid="aplsearch"></include>) application
+		where rnum between #{rowStart} AND #{rowEnd}
+		order by aplno desc
+	</select>
+	
+	<!-- 신청 전체 페이징 개수 -->
+	
+	<select id="aplListCount" parameterType="ApplicationSearchDTO" resultType="int">
+		select count(*) from application
+		where 1=1
+		<include refid="aplsearch"></include>
+		and aplno > 0
+	</select>
+	
+	<!-- 신청 전체 페이징 검색 -->
+	
+	<sql id="aplsearch">
+		<if test="searchType != null">
+			<if test="searchType == 'm'.toString()">and mid like '%' || #{keyword} ||'%'</if>
+			<if test="searchType == 'p'.toString()">and pname like '%' || #{keyword} ||'%'</if>
+			<if test="searchType == 'c'.toString()">and aplcontents like '%' || #{keyword} ||'%'</if>
+		</if>
+	</sql>
+	
+	<!-- 신청 페이징처리 내 조회 -->
+	
+	<select id="aplListPageMy" parameterType="ApplicationDTO" resultType="ApplicationDTO">
+		select * from (select aplno, mid, pbrand, pname, pcolor, psize, aplcontents, aplreasons, row_number()
+		over(order by aplno desc) as rnum
+		from application where mid = #{mid}) application
+		where rnum between #{rowStart} AND #{rowEnd}
+		order by aplno desc
+	</select>
+	
+	<!-- 신청 내 페이징 개수 -->
+	
+	<select id="aplListCountMy" resultType="int">
+		select count(*) from application where mid = #{mid}
+	</select>
+	
+	<!-- 신청 상세 조회 -->
+	
+	<select id="aplSelectDetail" parameterType="ApplicationDTO" resultType="ApplicationDTO">
+		select aplno, mid, pbrand, pname, pcolor, psize, aplcontents, aplreasons from application
+		where aplno = #{aplno}
+	</select>
+	
+	<!-- 신청 등록 -->
+	
+	<insert id="aplInsert" parameterType="ApplicationDTO">
+		insert into application (aplno, mid, pbrand, pname, pcolor, psize, aplcontents, aplreasons)
+		values(apl_seq.nextval, #{mid}, #{pbrand}, #{pname}, #{pcolor}, #{psize}, #{aplcontents}, #{aplreasons})
+	</insert>
+	
+	<!-- 신청 수정 -->
+	
+	<update id="aplUpdate" parameterType="ApplicationDTO">
+		update application set aplcontents = #{aplcontents}, aplreasons = #{aplreasons}
+		where aplno = #{aplno}
+	</update>
+	
+	<!-- 신청 삭제 -->
+	
+	<delete id="aplDelete" parameterType="ApplicationDTO">
+		delete from application
+		where aplno = #{aplno}
+	</delete>
+	
+	
+	<!-- 주문 페이징처리 전체 조회 -->
+	
+	<select id="ordListPage" parameterType="OrderSearchDTO" resultType="OrderDTO">
+		select * from (select ordno, mid, mname, pname, pbrand, psize,
+		pcolor, pprice, pquantity, ordaddress, orddate, ordsituation, row_number()
+		over(order by ordno desc) as rnum
+		from ordercheck where 1=1
+		<include refid="ordsearch"></include>) ordercheck
+		where rnum between #{rowStart} AND #{rowEnd}
+		order by ordno desc
+	</select>
+	
+	<!-- 주문 전체 페이징 개수 -->
+	
+	<select id="ordListCount" parameterType="OrderSearchDTO" resultType="int">
+		select count(*) from ordercheck
+		where 1=1
+		<include refid="ordsearch"></include>
+		and ordno > 0
+	</select>
+	
+	<!-- 주문 전체 페이징 검색 -->
+	
+	<sql id="ordsearch">
+		<if test="searchType != null">
+			<if test="searchType == 'm'.toString()">and mid like '%' || #{keyword} ||'%'</if>
+			<if test="searchType == 'p'.toString()">and pname like '%' || #{keyword} ||'%'</if>
+			<if test="searchType == 's'.toString()">and ordsituation like '%' || #{keyword} ||'%'</if>
+		</if>
+	</sql>
+	
+	<!-- 주문 내 페이징 개수 -->
+	
+	<select id="ordListPageMy" parameterType="OrderPageDTO" resultType="OrderDTO">
+		select * from (select ordno, mid, mname, pname, orddate, ordsituation, row_number()
+		over(order by ordno desc) as rnum
+		from ordercheck where mid = #{mid}) ordercheck
+		where rnum between #{rowStart} AND #{rowEnd}
+		order by ordno desc
+	</select>
+	
+	<!-- 주문 내 페이징 개수 -->
+	
+	<select id="ordListCountMy" resultType="int">
+		select count(*) from ordercheck where mid = #{mid}
+	</select>
+	
+	<!-- 주문 상세 조회 -->
+	
+	<select id="ordSelectDetail" parameterType="OrderDTO" resultType="OrderDTO">
+		select ordno, mid, mname, pimg, pbrand, pname, psize, pcolor, pprice, pquantity, ordaddress, orddate, ordsituation from ordercheck
+		where ordno = #{ordno}
+	</select>
+	
+	<!-- 주문하기 -->
+
+	<insert id="ordInsert" parameterType="OrderDTO">
+		insert into ordercheck (ordno, mid, mname, pimg, pname, pbrand, psize, pcolor, pprice, pquantity, ordaddress, orddate, ordsituation)
+		values(ord_seq.nextval, #{mid}, #{mname}, #{pimg}, #{pname}, #{pbrand}, #{psize}, #{pcolor}, #{pprice}, #{pquantity}, #{ordaddress}, to_char(sysdate, 'yy-mm-dd'), #{ordsituation})
+	</insert>
+	
+	<insert id="ordInsertaslists" parameterType="OrderDTO">
+		insert into ordercheck (ordno, mid, mname, pimg, pname, pbrand, psize, pcolor, pprice, pquantity, ordaddress, orddate, ordsituation)
+		values(ord_seq.nextval, #{mid}, #{mname}, #{pimg}, #{pname}, #{pbrand}, #{psize}, #{pcolor}, #{pprice}, #{pquantity}, #{ordaddress}, to_char(sysdate, 'yy-mm-dd'), #{ordsituation})
+	</insert>
+	
+	<!-- 주문 수정 -->
+	
+	<update id="ordUpdate" parameterType="OrderDTO">
+		update ordercheck set psize = #{psize}, pprice = #{pprice}, pquantity = #{pquantity}, ptotal = #{ptotal}, ordaddress = #{ordaddress}, ordsituation = #{ordsituation}
+		where ordno = #{ordno}
+	</update>
+	
+	<!-- 주문 취소 -->
+	
+	<delete id="ordDelete" parameterType="OrderDTO">
+		delete from ordercheck
+		where ordno = #{ordno}
+	</delete>
+	
+	<select id="EventselectAll" resultType="EventDTO">
+		select eno, ename, eperiod, edate, etarget, etype, edcrate, eimg, efile
+		from (
+		select eno, ename, eperiod, edate, etarget, etype, edcrate, eimg, efile, ROW_NUMBER() OVER (ORDER BY eno desc) as rNum
+		from event
+		)mp
+		where rNum between #{rowStart} and #{rowEnd}
+		order by eno desc
+
+	</select>
+
+	<select id="Eventselect" parameterType="EventDTO" resultType="EventDTO">
+		select eno, ename, eperiod, to_char(edate, 'yyyy-mm-dd') edate, etarget, etype, edcrate, eimg, efile from event
+		where eno = #{eno}
+	</select>
+
+	<select id="EventlistCount" resultType="int">
+	<![CDATA[
+		select count(eno)
+		from event
+		where eno >0
+	]]>
+
+	</select>
+
+	<insert id="Eventinsert" parameterType="EventDTO">
+		insert into event(eno, ename, eperiod, edate, etarget, etype, edcrate, eimg, efile)
+		values(event_seq.nextval, #{ename}, #{eperiod}, #{edate}, #{etarget}, #{etype}, #{edcrate}, #{eimg}, #{efile})
+	</insert>
+
+	<update id="Eventupdate" parameterType="EventDTO">
+			update event set ename = #{ename}, eperiod = #{eperiod}, etarget = #{etarget}, etype = #{etype}, edcrate = #{edcrate}, eimg = #{eimg}, efile = #{efile}
+			where eno = #{eno}
+	</update>
+
+	<delete id="Eventdelete" parameterType="EventDTO">
+		delete from event
+		where eno = #{eno}
+
+	</delete>
+
+	<select id="ReviewselectAll" resultType="ReviewDTO">
+    
+    select rvno, 
+    rvcontent, 
+    rvorderno, 
+    mid, 
+    rvdate,
+    rvrating, 
+    rvsize, 
+    rvcolor, 
+    rvthumbimg,
+    mysize,
+    myfootball,
+    myinstep
+    
+    from REVIEW
+    
+  	 ORDER BY rvdate DESC, rvno DESC 
+  	 
+    </select>
+    
+    <select id="Reviewselect" parameterType="ReviewDTO" resultType="ReviewDTO">
+    
+    select  rvno, 
+    rvcontent, 
+    rvorderno, 
+    mid, 
+    rvdate,
+    rvrating, 
+    rvsize, 
+    rvcolor, 
+    rvfile,
+    rvimg,
+    rvthumbimg,
+    mysize,
+    myfootball,
+    myinstep 
+    
+    from review
+    
+    where rvno = #{rvno}
+    
+    </select>
+    
+    <insert id="Reviewinsert" parameterType="ReviewDTO">
+    	
+    insert into review (rvno,
+    rvcontent,
+    rvorderno,
+    mid,
+    rvdate,
+    rvrating, 
+    rvsize, 
+    rvcolor, 
+	rvimg,
+	rvthumbimg,
+    mysize
+  
+    )
+    
+    values(rvno_seq.nextval,
+    #{rvcontent},
+    #{rvorderno},
+    #{mid},
+    sysdate,
+    #{rvrating}, 
+    #{rvsize}, 
+    #{rvcolor}, 
+	#{rvimg},
+	#{rvthumbimg},
+    #{mysize}
+   
+		 )
+		 
+    </insert>
+    
+    
+    <update id="Reviewupdate" parameterType="ReviewDTO">
+    
+    update review set
+    	
+    rvcontent = #{rvcontent},
+    rvorderno = #{rvorderno},
+    mid	= #{mid},
+    rvdate	= sysdate,
+    rvrating	= #{rvrating},
+    rvsize	= #{rvsize},
+    rvcolor	= #{rvcolor},
+	rvimg = #{rvimg},
+	rvthumbimg = #{rvthumbimg},
+	
+    mysize = #{mysize}
+  
+    
+    where rvno = #{rvno}
+    
+    </update>
+    
+    
+    <delete id="Reviewdelete" parameterType="ReviewDTO">
+    
+    delete from review
+    
+    where rvno = #{rvno}
+    
+    
+    </delete>
+    
+    
+    <select id="ReviewlistPage" resultType="ReviewDTO" parameterType="ReviewDTO">
+   SELECT rvno, rvcontent, rvorderno, rvdate, rvsize, rvcolor, rvthumbimg, rvimg, mid
+    from (
+        select rvno, rvcontent, rvorderno, rvdate, rvsize, rvcolor, rvthumbimg, rvimg, mid,
+            row_number() over (order by rvno desc) as rnum
+        
+        
+         from review 
+         where 1=1
+         
+         <include refid="rvsearch"></include>
+         
+            ) 
+        
+        
+            where rnum between #{rowStart} and #{rowEnd}
+            order by rvno desc
+   
+  </select>
+  
+  <!--  리뷰 총 갯수  -->
+  <select id="rvCount" resultType="int">
+	<![CDATA[
+		SELECT COUNT(rvno)
+		  FROM review
+		 WHERE rvno > 0
+	]]>
+	</select>
+	
+		<sql id="rvsearch">
+		<if test="searchType != null">
+			<if test="searchType == 'content'.toString()">AND rvcontent LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'size'.toString()">AND rvsize LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'color'.toString()">AND rvcolor LIKE '%' || #{keyword} || '%'</if>
+			<if test="searchType == 'sizecolor'.toString()">AND (rvsize LIKE '%' || #{keyword} || '%') or (rvcolor LIKE '%' || #{keyword} || '%')</if>
+		</if>
+	</sql>
+
+</mapper>
