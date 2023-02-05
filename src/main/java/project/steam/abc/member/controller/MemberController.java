@@ -313,8 +313,8 @@ public class MemberController {
         int checkNum = random.nextInt(8889) + 1111;
         logger.info("휴대폰 인증번호 " + checkNum);
 		
-		String api_key = "NCS7SQTOYYYEX62T";
-	    String api_secret = "JQDGRHQ2XBFALGJTBBSHCU33UIT3G7GA";
+		String api_key = "api_key";
+	    String api_secret = "api_secret";
 	    Message coolsms = new Message(api_key, api_secret);
 
         String receiverPhoneNum = memberDTO.getMphonenum();
