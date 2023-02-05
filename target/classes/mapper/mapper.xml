@@ -623,20 +623,13 @@
     </delete>
 
     
-    <select id="ReviewlistPage" resultType="ReviewDTO" parameterType="ReviewDTO">
-    SELECT @rownum:=@rownum+1 num, A.*
-    from review A, (
-        select rvno, rvcontent, rvorderno, rvdate, rvsize, rvcolor, rvthumbimg, rvimg, mid,
-            row_number() over (order by rvno desc) as num
-        
-        
-         from review 
-         where 1=1
+  <select id="ReviewlistPage" resultType="ReviewDTO" parameterType="ReviewDTO">
+    select * FROM (select @rownum:=@rownum+1 num, A.*
+    from review A, (SELECT @ROWNUM := 0) R where 1=1
          
          <include refid="rvsearch"></include>
          
-            ) R
-        
+            ) B
         
             where num between #{rowStart} and #{rowEnd}
             order by rvno desc

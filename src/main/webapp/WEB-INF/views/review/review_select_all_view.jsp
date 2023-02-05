@@ -106,7 +106,7 @@
 
 			<c:choose>
 			
-			<c:when test="${empty list }">
+			<c:when test="${empty list}">
 			
 			<table>		
 			
@@ -149,7 +149,7 @@
 				<th>상세보기</th>
 			</tr>
 			</thead>
-	
+			
 			<tbody>
 				<c:forEach var="list" items="${list}">
 					<tr>
