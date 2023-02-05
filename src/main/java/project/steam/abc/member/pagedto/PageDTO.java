@@ -1,4 +1,4 @@
-package project.steam.abc.page.dto;
+package project.steam.abc.member.pagedto;
 
 import org.springframework.stereotype.Component;
 

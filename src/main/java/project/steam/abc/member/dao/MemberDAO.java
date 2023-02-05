@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import project.steam.abc.member.dto.MemberDTO;
 import project.steam.abc.member.dto.MemberDTO2;
-import project.steam.abc.page.dto.PageDTO;
+import project.steam.abc.member.pagedto.PageDTO;
 
 @Repository
 public class MemberDAO {

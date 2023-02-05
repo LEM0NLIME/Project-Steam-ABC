@@ -23,8 +23,8 @@ import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import project.steam.abc.member.dto.MemberDTO;
 import project.steam.abc.member.dto.MemberDTO2;
+import project.steam.abc.member.pagedto.PageDTO;
 import project.steam.abc.member.service.MemberService;
-import project.steam.abc.page.dto.PageDTO;
 
 @Controller
 
