@@ -314,7 +314,7 @@ public class MemberController {
         logger.info("휴대폰 인증번호 " + checkNum);
 		
 		String api_key = "api_key";
-	    String api_secret = "api_secret";
+	    String api_secret = "api_secrets";
 	    Message coolsms = new Message(api_key, api_secret);
 
         String receiverPhoneNum = memberDTO.getMphonenum();
