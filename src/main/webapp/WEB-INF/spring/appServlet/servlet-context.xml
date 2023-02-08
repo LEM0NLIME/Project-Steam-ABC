@@ -68,11 +68,11 @@
 			<exclude-mapping path="/MemberLogOut"/>
 			<beans:bean id="memberInterceptor" class="project.steam.abc.member.interceptor.MemberInterceptor" />
 		</interceptor>
-		<interceptor>
+		<!-- <interceptor>
 			<mapping path="/cart/**"/>
 			<exclude-mapping path="/CartInsert"/>
 			<beans:bean id="CartInterceptor" class="project.steam.abc.cart.interceptor.CartInterceptor"/>
-		</interceptor>
+		</interceptor> -->
 	</interceptors>
 
 
