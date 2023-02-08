@@ -286,7 +286,7 @@ public class MemberController {
 
 		String subject = "ABC_MART 인증번호";
 		String content = "인증번호는 " + checkNum + " 입니다.";
-		String senderMail = "mail_sender_2023@naver.com";
+		String senderMail = "osa1999@naver.com";
 		String receiverMail = memberDTO.getMemail();
 		String certificationNum = ""+ checkNum;
 		

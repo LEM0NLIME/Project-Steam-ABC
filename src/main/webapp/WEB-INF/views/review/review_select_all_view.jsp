@@ -194,11 +194,9 @@
   </div>
   
 		
-		<div>
-  <ul>
+<div>
+  <ul style="margin-left: 50%;">
   
- 
-		
     <c:if test="${pageMaker.prev}">
     	<li><a href="ReviewSelect${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
     </c:if> 
@@ -212,11 +210,6 @@
     </c:if> 
   </ul>
 </div>
-
-
-		<div>
-			<button type="button" onclick="location.href='./ReviewInsert'"> 리뷰 작성 </button>
-		</div>
 		
 		</form>
 	</section>

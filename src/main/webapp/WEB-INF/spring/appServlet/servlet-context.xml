@@ -48,8 +48,8 @@
 	
 	<beans:property name="host" value="smtp.naver.com" />
 	<beans:property name="port" value="465" />
-	<beans:property name="username" value="mail_sender_2023"/>
-	<beans:property name="password" value="sender@2023"/>
+	<beans:property name="username" value="osa1999"/>
+	<beans:property name="password" value="Sungan@974634"/>
 	<beans:property name="javaMailProperties">
 	
 	<beans:props>
@@ -68,11 +68,16 @@
 			<exclude-mapping path="/MemberLogOut"/>
 			<beans:bean id="memberInterceptor" class="project.steam.abc.member.interceptor.MemberInterceptor" />
 		</interceptor>
+		
+		<!--  
+		
 		<interceptor>
 			<mapping path="/cart/**"/>
 			<exclude-mapping path="/CartInsert"/>
 			<beans:bean id="CartInterceptor" class="project.steam.abc.cart.interceptor.CartInterceptor"/>
 		</interceptor>
+		
+		-->
 	</interceptors>
 
 

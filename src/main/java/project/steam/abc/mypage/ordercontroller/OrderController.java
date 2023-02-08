@@ -98,6 +98,17 @@ public class OrderController {
 				String ordSituation = orderDTO.getOrdsituation();
 
 				int productQuantity = StringUtils.countMatches(arrPname, ",") + 1;
+				
+				
+				if(productQuantity == 1) {
+					
+					orderService.ordInsert(orderDTO);
+					
+					
+					return "./order/order_insert_view";
+					
+				}
+				
 
 				String[] arrayProducts = arrPname.split(",");
 				
@@ -130,14 +141,6 @@ public class OrderController {
 	
 	@RequestMapping(value = "/OrderInsertAsCart", method = RequestMethod.POST)
 	public String ordInsertAsCart(Model model, OrderDTO orderDTO, ProductDTO productDTO) {
-
-		String mid = productDTO.getMid();
-		
-		System.err.println(mid);
-		System.err.println(mid);
-		System.err.println(mid);
-		System.err.println(mid);
-		System.err.println(mid);
 		
 		productService.productUpdateSetMid(productDTO);
 		

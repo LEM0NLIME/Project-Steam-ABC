@@ -184,10 +184,11 @@
 										class="cartBtn btn_cart btn btn-danger btn-xs">장바구니
 										담기</button>
 								</div>
-								<form action="./OrderInsert">
+								<form action="./OrderInsert" id="directInsert">
+									<input type="hidden" name="mid" value="${sessionID}">
 									<input type="hidden" name="pname" value="${productDTO.pname}">
 									<input type="hidden" name="pbrand" value="${productDTO.pbrand}">
-									<input type="hidden" name="psize" value="${productDTO.psize}">
+									<input type="hidden" name="psize" id="selectedSize" value="${productDTO.psize}">
 									<input type="hidden" name="pcolor" value="${productDTO.pcolor}">
 									<input type="hidden" name="pprice" value="${productDTO.pprice}">
 									<input type="hidden" name="pquantity" value="1"> <input
@@ -205,8 +206,16 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+	
 		$(function() {
-
+			
+			$("#directInsert").submit(function() {
+					
+			$("#selectedSize").val($("input[name=psize]:checked").val()); 
+					
+			});
+			
+			
 			$("#quantityvalue").change(
 					function() {
 
@@ -299,6 +308,7 @@
 			});
 
 		});
+
 	</script>
 	<footer class="bottom"> </footer>
 </body>
