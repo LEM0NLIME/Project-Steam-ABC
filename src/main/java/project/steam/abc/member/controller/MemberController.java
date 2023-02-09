@@ -87,7 +87,7 @@ public class MemberController {
 		return "./member/member_inquiry_detail_view";
 	}
 
-	// 관리자 - 회원등록 GET
+	// 관리자 - 회원등록
 	@RequestMapping(value = "/MemberInsert", method = RequestMethod.GET)
 
 	public String memberInsert(Model model) {
@@ -95,7 +95,7 @@ public class MemberController {
 		return "./member/member_insert";
 	}
 
-	// 관리자 - 회원등록 GET
+	// 관리자 - 회원등록뷰
 	@RequestMapping(value = "/MemberInsertView", method = RequestMethod.POST)
 
 	public String memberInsert(Model model, MemberDTO memberDTO) {
@@ -123,7 +123,7 @@ public class MemberController {
 		return "/member/member_login";
 	}
 
-	// 회원 - 아이디 찾기 후 로그인
+	// 회원 - 아이디, 비밀번호  찾기 후 로그인
 	@RequestMapping(value = "/MemberLogInAsSearch", method = RequestMethod.POST)
 
 	public String memberInsertAsSearch(Model model, MemberDTO memberDTO) {

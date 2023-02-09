@@ -29,7 +29,7 @@ public class MemberLogInController {
 			return "./member/member_login";
 		}
 		
-		//로그인 체크 POST
+		//로그인 체크
 	  	@RequestMapping(value = "/MemberLogInCheck" , method = RequestMethod.POST)
 
 		public String memberLogInCheck(Model model, HttpSession session, HttpServletRequest request, HttpServletResponse response, MemberDTO memberDTO) {

@@ -48,7 +48,27 @@ $(function() {
 			
 		}
 		
-	})
+	});
+	
+	$("input[id='eMailNumber']").change(function() {
+		
+		var nEmail = $("input[id='eMailNumber']").val(); 
+		var certification = $("#certificationNum").val();
+		
+		if(nEmail == certification) {
+			
+			$("p[id='eMailConfirmN']").hide();
+			$("p[id='eMailConfirmY']").show();
+			
+		}else {
+			
+			
+			$("p[id='eMailConfirmY']").hide();
+			$("p[id='eMailConfirmN']").show();
+			
+		}
+		
+	});
 				
 	$("button[id='eMailPermission']").click(function() {
 		
@@ -104,7 +124,26 @@ $(function() {
 			
 		}
 		
-	})
+	});
+	
+	$("input[id='PhoneNumbers']").change(function() {
+		
+		var nPhone = $("input[id='PhoneNumbers']").val();
+		var certification2 = $("#certificationNum2").val();
+		
+		if(nPhone == certification2) {
+			
+			$("p[id='phoneConfirmN']").hide();
+			$("p[id='phoneConfirmY']").show();
+			
+		}else {
+			
+			$("p[id='phoneConfirmY']").hide();
+			$("p[id='phoneConfirmN']").show();
+			
+		}
+		
+	});
 	
 	$("button[id='phoneNumberPermissions']").click(function() {
 		

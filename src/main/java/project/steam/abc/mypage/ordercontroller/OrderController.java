@@ -104,7 +104,6 @@ public class OrderController {
 					
 					orderService.ordInsert(orderDTO);
 					
-					
 					return "./order/order_insert_view";
 					
 				}
