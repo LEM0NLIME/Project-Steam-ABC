@@ -51,6 +51,12 @@ $(function() {
 			$("input[name='pbrand']").focus();
 			return false;
 		}
+		
+		if ($("#psize option:selected").val() == '선택') {
+			alert("상품 사이즈를 선택하세요.");
+			$("#psize").val().focus();
+			return false;
+		}
 
 		if (!$("input[name='pcolor']").is(":checked")) {
 			alert("색상을 선택해 주세요.");

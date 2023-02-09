@@ -68,7 +68,8 @@ public class CartController {
 		
 		return "./cart/cart_select";
 	}
-
+	
+	//장바구니 상품 삭제
 	@RequestMapping(value = "/CartSelectDetail", method = RequestMethod.POST)
 	public String CartDelete(HttpServletRequest httpServletRequest) {
 

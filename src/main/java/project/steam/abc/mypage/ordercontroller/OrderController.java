@@ -99,6 +99,11 @@ public class OrderController {
 
 				int productQuantity = StringUtils.countMatches(arrPname, ",") + 1;
 
+				if(productQuantity == 1 ) {
+					orderService.ordInsert(orderDTO);
+					return "./order/order_insert_view";
+				}
+				
 				String[] arrayProducts = arrPname.split(",");
 				
 				for (int i = 0; i < productQuantity; i++) {

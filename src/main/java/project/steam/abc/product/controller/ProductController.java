@@ -38,14 +38,13 @@ public class ProductController {
 	public String items(Model model, @ModelAttribute("productSearchCriteria") ProductSearchCriteria productSearchCriteria) {
 		
 		model.addAttribute("items", productService.productSelectAlls(productSearchCriteria));
-		
+				
 		ProductPageMaker pageMaker = new ProductPageMaker();
 		pageMaker.setCri(productSearchCriteria);
 		pageMaker.setTotalCount(productService.listCount(productSearchCriteria));
 
 		model.addAttribute("pageMaker", pageMaker);
 		
-		logger.info(" items 로그 확인 - " , model);
 		return "./product/product_select_all_view";
 	}
 	

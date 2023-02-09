@@ -7,13 +7,11 @@
 <meta charset="UTF-8">
 <link rel="shortcut icon" href="./img/webIcon.png" type="image/x-icon">
 <title>ABC_MART</title>
-<link rel="shortcut icon" href="img/abc.svg" type="image/x-icon">
+
 <link rel="stylesheet" href="./css/bootstrap.css">
 <link rel="stylesheet" href="./css/product_common.css">
 <link rel="stylesheet" href="./css/product_detail_common.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script type="text/javascript" src="./js/bootstrap.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="./js/product_insert_validation.js"></script>
 
 </head>
@@ -118,10 +116,10 @@
 								name="pbrand">
 						</div>
 						<div class="product_input_group">
-							<label for="psize"> 상품 사이즈 </label> <select id="psize"
-								name="psize">
+							<label for="psize"> 상품 사이즈 </label> 
+							<select id="psize" name="psize">
 								<option value="선택" selected>사이즈를 선택해주세요.</option>
-								<option value="210">210 ~ 280</option>
+								<option value="0">210 ~ 280</option>
 							</select>
 						</div>
 						<div class="product_input_group">
