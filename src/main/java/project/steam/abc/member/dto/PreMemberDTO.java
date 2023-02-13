@@ -14,7 +14,7 @@ import lombok.ToString;
 
 @ToString
 
-public class MemberDTO2 {
+public class PreMemberDTO {
 
 	private String mid;
 	private String mpw;

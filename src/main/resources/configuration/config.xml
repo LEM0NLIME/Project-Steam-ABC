@@ -7,7 +7,7 @@
 
 <typeAliases>
 	<typeAlias alias="MemberDTO" type="project.steam.abc.member.dto.MemberDTO"/>
-	<typeAlias alias="MemberDTO2" type="project.steam.abc.member.dto.MemberDTO2"/>
+	<typeAlias alias="MemberDTO2" type="project.steam.abc.member.dto.PreMemberDTO"/>
 	<typeAlias alias="PageDTO" type="project.steam.abc.member.pagedto.PageDTO"/>
 	<typeAlias alias="CustomerDTO" type="project.steam.abc.customer.dto.CustomerDTO"/>
 	<typeAlias alias="ProductDTO" type="project.steam.abc.product.dto.ProductDTO"/>

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import project.steam.abc.member.dto.MemberDTO;
-import project.steam.abc.member.dto.MemberDTO2;
+import project.steam.abc.member.dto.PreMemberDTO;
 import project.steam.abc.member.pagedto.PageDTO;
 import project.steam.abc.member.service.MemberService;
 
@@ -148,12 +148,11 @@ public class MemberController {
 	// 관리자 - 회원수정 POST
 	@RequestMapping(value = "/MemberUpdate", method = RequestMethod.POST)
 
-	public String memberUpdate(Model model, MemberDTO memberDTO, MemberDTO2 memberDTO2) {
+	public String memberUpdate(Model model, MemberDTO memberDTO, PreMemberDTO memberDTO2) {
 
 		memberDTO2 = memberService.memberPreInquiryDetail(memberDTO2.getMid());
 
 		model.addAttribute("memberDTO2", memberDTO2);
-
 		memberService.memberUpdate(memberDTO);
 
 		memberService.memberInquiryDetail(memberDTO.getMid());

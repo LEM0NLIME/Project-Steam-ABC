@@ -117,7 +117,7 @@ history.back();
 		<tr>
 			<td>${List.mname}</td>
 			<td>${List.mid}</td>
-			<td>${List.mpw}</td>
+			<td><input type="password" value="${List.mpw}" style="border: none; text-align: center;" readonly="readonly"></td>
 	
 	<c:choose>
 	

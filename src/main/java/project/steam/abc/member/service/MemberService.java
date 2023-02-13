@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import project.steam.abc.member.dao.MemberDAO;
 import project.steam.abc.member.dto.MemberDTO;
-import project.steam.abc.member.dto.MemberDTO2;
+import project.steam.abc.member.dto.PreMemberDTO;
 import project.steam.abc.member.pagedto.PageDTO;
 
 @Service
@@ -29,7 +29,7 @@ public class MemberService {
 		
 		}
 		
-		public MemberDTO2 memberPreInquiryDetail(String eid) {
+		public PreMemberDTO memberPreInquiryDetail(String eid) {
 			
 		return memberDAO.preInquiryDetail(eid);
 		

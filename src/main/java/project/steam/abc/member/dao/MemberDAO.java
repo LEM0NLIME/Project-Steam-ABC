@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import project.steam.abc.member.dto.MemberDTO;
-import project.steam.abc.member.dto.MemberDTO2;
+import project.steam.abc.member.dto.PreMemberDTO;
 import project.steam.abc.member.pagedto.PageDTO;
 
 @Repository
@@ -29,7 +29,7 @@ public class MemberDAO {
 		
 	}
 	
-	public MemberDTO2 preInquiryDetail(String eid) {
+	public PreMemberDTO preInquiryDetail(String eid) {
 		
 		return sqlSessionTemplate.selectOne("preMemberInquiryDetail", eid);
 		
