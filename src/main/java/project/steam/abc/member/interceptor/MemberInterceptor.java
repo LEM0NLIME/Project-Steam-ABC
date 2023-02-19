@@ -13,6 +13,8 @@ public class MemberInterceptor extends HandlerInterceptorAdapter{
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 		
+		System.err.println("인터셉터 정상 작동 확인");
+		
 		HttpSession session = request.getSession();
 		
 		Cookie[] cookies = request.getCookies();

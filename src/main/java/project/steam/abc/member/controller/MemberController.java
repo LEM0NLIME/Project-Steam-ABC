@@ -23,7 +23,7 @@ import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
 import project.steam.abc.member.dto.MemberDTO;
 import project.steam.abc.member.dto.PreMemberDTO;
-import project.steam.abc.member.pagedto.PageDTO;
+import project.steam.abc.member.pagedto.MemberPageDTO;
 import project.steam.abc.member.service.MemberService;
 
 @Controller
@@ -48,7 +48,7 @@ public class MemberController {
 	// 관리자 - 회원 전체조회
 	@RequestMapping(value = "/MemberInquiryAll", method = RequestMethod.GET)
 
-	public String list(Model model, PageDTO pageDTO, @RequestParam(value = "nowPage", required = false) String nowPage,
+	public String list(Model model, MemberPageDTO pageDTO, @RequestParam(value = "nowPage", required = false) String nowPage,
 			@RequestParam(value = "countPerPage", required = false) String countPerPage) {
 
 		int total = memberService.countMembers();
@@ -68,7 +68,7 @@ public class MemberController {
 
 		}
 
-		pageDTO = new PageDTO(total, Integer.parseInt(nowPage), Integer.parseInt(countPerPage));
+		pageDTO = new MemberPageDTO(total, Integer.parseInt(nowPage), Integer.parseInt(countPerPage));
 
 		model.addAttribute("page", pageDTO);
 		model.addAttribute("List", memberService.memberInquiryAll(pageDTO));

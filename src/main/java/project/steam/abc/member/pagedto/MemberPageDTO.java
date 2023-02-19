@@ -14,7 +14,7 @@ import lombok.ToString;
 
 @ToString
 
-public class PageDTO {
+public class MemberPageDTO {
 	
 	private int nowPage;
 	private int pageBegin;
@@ -27,11 +27,11 @@ public class PageDTO {
 	
 	private int countPage = 10;
 	
-	public PageDTO() {
+	public MemberPageDTO() {
 		
 	}
 	
-	public PageDTO(int total, int nowPage, int countPerPage) {
+	public MemberPageDTO(int total, int nowPage, int countPerPage) {
 		
 		setNowPage(nowPage);
 		setCountPerPage(countPerPage);

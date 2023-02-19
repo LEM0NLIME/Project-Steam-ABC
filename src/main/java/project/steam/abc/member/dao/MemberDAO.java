@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import project.steam.abc.member.dto.MemberDTO;
 import project.steam.abc.member.dto.PreMemberDTO;
-import project.steam.abc.member.pagedto.PageDTO;
+import project.steam.abc.member.pagedto.MemberPageDTO;
 
 @Repository
 public class MemberDAO {
@@ -17,7 +17,7 @@ public class MemberDAO {
 	
 	SqlSessionTemplate sqlSessionTemplate;
 	
-	public List<MemberDTO> inquiryAll(PageDTO pageDTO) {
+	public List<MemberDTO> inquiryAll(MemberPageDTO pageDTO) {
 		
 		return sqlSessionTemplate.selectList("memberInquiryAll", pageDTO);
 	
